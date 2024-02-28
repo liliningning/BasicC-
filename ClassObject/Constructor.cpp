@@ -110,4 +110,16 @@ int main()
 }
 #endif
 
+/* 默认构造函数 */
+class Demo
+{
+   
 
+};
+int main()
+{
+
+    Demo d; 
+    Demo d1 = d;
+    return 0;
+}
