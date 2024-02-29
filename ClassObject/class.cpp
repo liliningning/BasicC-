@@ -5,22 +5,51 @@
 class Student
 {
 public:
-    // Student()
-    // {
-    //     std ::cout << "构造" << std ::endl;
-    // }
-
-    Student(int age, const std ::string name)
+    /* 无参构造 */
+    Student()
+    {
+        std ::cout << "无参构造" << std ::endl;
+    }
+    /*带参构造 */
+    Student(int age, const std ::string &name)
     {
         m_age = age;
         m_name = name;
-        std ::cout << "有参构造" << std ::endl;
+        std ::cout << "二参构造" << std ::endl;
     }
+
+    Student(const std ::string &name)
+    {
+        m_age = 0;
+        m_name = name;
+        std ::cout << "一参构造" << std ::endl;
+    }
+    /* 拷贝构造函数*/
+    Student(const Student &stu)
+    {
+        m_age = stu.m_age;
+        m_name = stu.m_name;
+        std ::cout << "拷贝构造函数" << std ::endl;
+    }
+
+    /* 赋值运算符的重载 */
+    void operator=(const Student &stu)
+    {
+        m_age = stu.m_age;
+        m_name = stu.m_name;
+        std ::cout << "赋值运算符的重载" << std ::endl;
+    }
+
+
+    // ~ Studet()
+    // {
+    //     std ::cout << "析构函数" << std ::endl;
+    // }
 
     /* 类内声明 */
     void Setage(int age);
-     int getAge();
-    void setname(const std::string &name); 
+    int getAge();
+    void setname(const std::string &name);
     std ::string getName();
 
 private:
@@ -48,11 +77,22 @@ std ::string Student ::getName()
 
 int main()
 {
-    Student stu(10, "zhansan");
 
+    Student stu(10, "zhansan");
+    std ::cout << "age:" << stu.getAge() << ",name:" << stu.getName() << std ::endl;
+    // Student stu( "zhansan");
     // stu.Setage(10);
     // stu.setname("zhangsan");
-    std ::cout  << "age:" << stu.getAge()<< ",name:" << stu. getName()  << std ::endl;
+
+    /* 拷贝构造的两种方法 */
+    // Student s1 = stu;
+    Student s1(stu);
+    std ::cout << "age:" << stu.getAge() << ",name:" << stu.getName() << std ::endl;
+
+    /*赋值运算符的重载  */
+    Student s2;
+    s2 = stu;
+    std ::cout << "age:" << stu.getAge() << ",name:" << stu.getName() << std ::endl;
 
     return 0;
 }

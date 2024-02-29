@@ -50,7 +50,7 @@ int main()
     {
         B b(1, 2, 3, 4);
     }
-    std ::cout << "begin" << std ::endl;
+    std ::cout << "end" << std ::endl;
 
     return 0;
 }
