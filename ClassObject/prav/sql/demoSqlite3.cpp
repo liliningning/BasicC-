@@ -16,7 +16,7 @@ SQL::SQL( const char * dbname):m_db(nullptr)
 
 bool SQL::sqlCreate()
 {
-    const char *sql = "create table  if not exists usr (id int primary key not null, name text not nul, lage int not null)";
+    const char *sql = "create table  if not exists usr (id int primary key not null, name text not null, age int not null)";
     int ret = sqlite3_exec(m_db, sql, NULL, NULL, &errorVal);
     if (ret != SQLITE_OK)
     {
@@ -29,7 +29,7 @@ bool SQL::sqlCreate()
 bool SQL::sqlInsert(int id,  const char * name, int age)
 {
     char sql[128] = {0};
-    sprintf(sql, "insert into usr  values(%d, %s, %d)", id, name, age);
+    sprintf(sql, "insert into usr  values(%d, '%s', %d)", id, name, age);
     int ret = sqlite3_exec(m_db, sql, NULL, NULL, &errorVal);
     if (ret != SQLITE_OK)
     {
@@ -82,7 +82,7 @@ int main()
     SQL SQL("chatBase.db");
     SQL.sqlCreate();
     std ::cout << "sql table  create successful "  <<  std ::endl;
-    SQL.sqlInsert(1001, "zhangsan", 19);
+    SQL.sqlInsert(1001, "zs", 19);
     SQL.sqlSelect();
     SQL.~SQL();
 
