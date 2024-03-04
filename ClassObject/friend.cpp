@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 
+/* 辗转相除法   */
 /* 辗转相除法  最大公约数    第二步为除数变为被除数 余数变为除数   （被除数 % 除数 = 商 ....  余数 ）     */
 int gcd(int x, int y)
 {
