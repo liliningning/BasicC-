@@ -3,10 +3,10 @@
 
 int main()
 {
-    Mstring s = "hello";
+    Mstring s = "aello";
     Mstring s1 = "hello";
     // Mstring s2 = s += s1;
-    if (s1 != s)
+    if (s1 > s)
     {
         std ::cout << "true" << std ::endl;
     }

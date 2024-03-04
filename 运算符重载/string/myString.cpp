@@ -163,6 +163,17 @@ bool Mstring::operator!=(const Mstring &str)
     return false;
 }
 
+bool Mstring::operator>(const Mstring &str)
+{
+
+    if (strcmp(this->s, str.s) > 0)
+    {
+        return true;
+    }
+
+    return false;
+}
+
 Mstring::~Mstring()
 {
     delete[] s;

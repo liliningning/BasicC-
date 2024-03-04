@@ -27,8 +27,13 @@ public:
 
     /*== 判断 */
     bool operator==(const Mstring &str);
-
+    /* != */
     bool operator!=(const Mstring &str); 
+
+    /* > */
+    bool operator>(const Mstring &str); 
+
+
     
     /* 析构 */
     ~Mstring();
