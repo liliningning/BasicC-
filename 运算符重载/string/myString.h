@@ -21,7 +21,7 @@ public:
     Mstring &operator=(const Mstring &str);
 
     /* += 自加  */
-    Mstring &operator+=(const Mstring &str);
+    Mstring &operator+=(  const Mstring &str);
     /* 加其他的内容 */
     Mstring &operator+=(const char c);
 
@@ -35,6 +35,11 @@ public:
 
     /* [] 修改当前位置的字符 */
     char &operator[](int index);
+
+    /* 强转 */
+    operator int ();
+
+    operator double ();
 
     /* 析构 */
     ~Mstring();

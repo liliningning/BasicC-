@@ -3,8 +3,8 @@
 
 int main()
 {
-    Mstring s("hello");
-    Mstring s1 = "hello";
+    Mstring s("0.999990000");
+    int s1 = s.operator double();
     // s[3] = 'h';
     // Mstring s2 = s += s1;
     // if (s1 > s)
@@ -15,5 +15,5 @@ int main()
     // {
     //     std ::cout << "flase" << std ::endl;
     // }
-    std ::cout << s << std ::endl;
+    std ::cout << s1 << std ::endl;
 }

@@ -112,13 +112,14 @@ Mstring &Mstring::operator=(const Mstring &str)
     return *this;
 }
 
+#if 0
 /* 自加 +=   自己先加后再进行赋值 */
-Mstring &Mstring::operator+=(const Mstring &str)
+Mstring &Mstring::operator+=( const Mstring &str)
 {
     *this = *this + str.s;
     return *this;
 }
-
+#endif
 /*加其他的内容 加字符   */
 Mstring &Mstring::operator+=(const char c)
 {
@@ -179,6 +180,17 @@ char &Mstring::operator[](int index)
     return this->s[index];
 
     
+}
+
+/* 强转为int类型 */
+Mstring::operator int()
+{
+    return atoi(this->s);
+}
+
+Mstring::operator double()
+{
+    return atof(this->s);
 }
 
 Mstring::~Mstring()
