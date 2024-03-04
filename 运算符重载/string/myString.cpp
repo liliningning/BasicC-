@@ -173,6 +173,13 @@ bool Mstring::operator>(const Mstring &str)
 
     return false;
 }
+/*修改当前位置的字符 */
+char &Mstring::operator[](int index)
+{
+    return this->s[index];
+
+    
+}
 
 Mstring::~Mstring()
 {

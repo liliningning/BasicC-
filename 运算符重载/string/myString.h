@@ -33,7 +33,8 @@ public:
     /* > */
     bool operator>(const Mstring &str); 
 
-
+    /* [] 修改当前位置的字符 */
+    char &operator[](int index);
     
     /* 析构 */
     ~Mstring();
