@@ -1,6 +1,8 @@
 #ifndef _MYSTRING_H
 #define _MYSTRING_H
 #include <iostream>
+
+class StringList;
 class Mstring
 {
 public:
@@ -21,7 +23,7 @@ public:
     Mstring &operator=(const Mstring &str);
 
     /* += 自加  */
-    Mstring &operator+=(  const Mstring &str);
+    Mstring &operator+=(const Mstring &str);
     /* 加其他的内容 */
     Mstring &operator+=(const char c);
 
@@ -37,9 +39,9 @@ public:
     char &operator[](int index);
 
     /* 强转 */
-    operator int ();
+    operator int();
 
-    operator double ();
+    operator double();
 
     /* 析构 */
     ~Mstring();
@@ -60,5 +62,28 @@ private:
 std ::ostream &operator<<(std ::ostream &os, const Mstring &str);
 /* 输入重载 */
 std ::istream &operator>>(std ::istream &is, Mstring &str);
+
+class StringList
+{
+public:
+    StringList();
+    /* += */
+    StringList &operator+=(const Mstring &str);
+
+    ~StringList();
+    friend std ::ostream &operator<<(std ::ostream &os, const StringList &list);
+
+private:
+    /* 字符串列表的大小 */
+    int size;
+
+    /* 字符串列表的容量 */
+    int capacity;
+
+    /* 字符串数组 */
+    Mstring *string;
+};
+
+std ::ostream &operator<<(std ::ostream &os, const StringList &list);
 
 #endif

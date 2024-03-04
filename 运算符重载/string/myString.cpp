@@ -5,7 +5,7 @@ const int CAPACITY = 15;
 /* 无参构造 */
 Mstring::Mstring()
 {
-    std ::cout << " 无参 " << std ::endl;
+    // std ::cout << " 无参 " << std ::endl;
     /* 长度 */
     this->size = 0;
     /* 容量 */
@@ -18,7 +18,7 @@ Mstring::Mstring()
 /*带参构造 */
 Mstring::Mstring(const char *str)
 {
-    std ::cout << " 带参 " << std ::endl;
+    // std ::cout << " 带参 " << std ::endl;
     this->size = strlen(str);
     /* 判断字符串的大小 小则正常写入 大则扩容 */
     if (this->size < CAPACITY)
@@ -41,7 +41,7 @@ Mstring::Mstring(const char *str)
 /* 拷贝构造 */
 Mstring::Mstring(const Mstring &str)
 {
-    std ::cout << " 拷贝 " << std ::endl;
+    // std ::cout << " 拷贝 " << std ::endl;
     this->capacity = str.capacity;
     this->size = str.size;
     this->s = new char[str.capacity];
@@ -216,4 +216,54 @@ std::istream &operator>>(std::istream &is,  Mstring &str)
         str += val;
     }
     return is;
+}
+
+
+/********************************************* 字符串列表StringList *************************************/
+
+
+StringList::StringList()
+{
+    this->size = 0;
+    this->capacity = CAPACITY;
+    this->string = new Mstring[this->capacity];
+    memset(this->string, 0, sizeof(this->string));
+}
+
+StringList &StringList::operator+=(const Mstring &str)
+{
+    /* 判断字符串的长度是否 和容量一样大 */
+    if(this->size == this->capacity)
+    {
+        this->capacity *= 2;
+
+        /* 定义一个新的字符串数组去接 */
+        Mstring * newArray = new Mstring [this->capacity];
+
+        for(int idx = 0; idx < this->size; idx++)
+        {
+            newArray[idx] = this->string[idx];
+        }
+        delete [] this->string;
+        this->string = newArray;
+    }
+    /* 如果没有大于则直接重数组的最后往上加 */
+    this->string[this->size++] = str;
+  
+    return *this;
+
+    // TODO: 在此处插入 return 语句
+}
+
+StringList::~StringList()
+{
+    delete [] this->string;
+}
+std::ostream &operator<<(std::ostream &os, const StringList &list)
+{
+    for(int idx = 0; idx < list.size; idx++)
+    {
+        os << list.string[idx] << std :: endl;
+    }
+    return os;
 }
