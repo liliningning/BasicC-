@@ -69,6 +69,13 @@ public:
     StringList();
     /* += */
     StringList &operator+=(const Mstring &str);
+       /* -= */
+    StringList &operator-=(const Mstring &str);
+
+    /* [] 找到当前位置的值并且替换 */
+    Mstring &operator[](int index);
+
+    // void RemoveByIndex()
 
     ~StringList();
     friend std ::ostream &operator<<(std ::ostream &os, const StringList &list);

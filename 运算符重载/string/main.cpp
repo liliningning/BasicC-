@@ -3,7 +3,7 @@
 
 int main()
 {
-    Mstring s("lisinjnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+    Mstring s("lisi, zhangsan, wangwu, hello");
     // int s1 = s.operator double();
     // // s[3] = 'h';
     // // Mstring s2 = s += s1;
@@ -19,7 +19,9 @@ int main()
 
     StringList list; 
     list+= s;
-    std ::cout << list << std ::endl;
+    list[1] = "nihao";
+    std ::cout << list[0] << std ::endl;
 
+    /* 是将s里面的所有字符全部塞到了字符串列表的第一个位置 则里面仅有一个*/
 
 }

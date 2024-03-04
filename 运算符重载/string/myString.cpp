@@ -177,9 +177,7 @@ bool Mstring::operator>(const Mstring &str)
 /*修改当前位置的字符 */
 char &Mstring::operator[](int index)
 {
-    return this->s[index];
-
-    
+    return this->s[index];    
 }
 
 /* 强转为int类型 */
@@ -252,7 +250,17 @@ StringList &StringList::operator+=(const Mstring &str)
   
     return *this;
 
-    // TODO: 在此处插入 return 语句
+}
+
+// StringList &StringList::operator-=(const Mstring &str)
+// {
+
+
+// }
+/* 找找=到当前位置的并替换 */
+Mstring &StringList::operator[](int index)
+{
+    return this->string[index];
 }
 
 StringList::~StringList()
