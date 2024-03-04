@@ -43,6 +43,8 @@ public:
 
     operator double();
 
+    /* 字符串的切割 */
+    StringList split(const Mstring &str);
     /* 析构 */
     ~Mstring();
 
@@ -75,7 +77,8 @@ public:
     /* [] 找到当前位置的值并且替换 */
     Mstring &operator[](int index);
 
-    // void RemoveByIndex()
+    void RemoveByIndex(int index);
+
 
     ~StringList();
     friend std ::ostream &operator<<(std ::ostream &os, const StringList &list);
