@@ -14,6 +14,9 @@ public:
     /* +的重载 */
     Mstring operator+(const Mstring &str);
 
+     /* -的重载 */
+    Mstring operator-(const Mstring &str);
+
     /* 析构 */
     ~Mstring();
     /* 友元函数 */

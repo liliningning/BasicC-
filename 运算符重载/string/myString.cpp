@@ -1,6 +1,7 @@
 #include "myString.h"
 #include <cstring>
 
+
 const int CAPACITY = 15;
 /* 无参构造 */
 Mstring::Mstring()
@@ -76,6 +77,33 @@ Mstring Mstring::operator+(const Mstring &str)
     }
 
     return result;
+}
+/* 运算符重载 - */
+Mstring Mstring::operator-(const Mstring &str)
+{
+    Mstring result (*this);
+    /* 找到需要删除的首字母位置 */
+    char * deles = strstr(result.s, str.s);
+    while(deles != nullptr)
+    {
+        /* 需要往前面移动的指针的位置 */
+        char * backptr = deles + str.size;
+        while(*backptr != '\0')
+        {
+        
+            // *deles++ = *backptr++;
+            *deles = *backptr;
+            *deles++;
+            *backptr++;
+
+        }
+        *deles = '\0';
+        deles = strstr(result.s, str.s);
+    }
+    return result;
+
+
+    return Mstring();
 }
 
 Mstring::~Mstring()
