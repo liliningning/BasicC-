@@ -20,6 +20,9 @@ public:
     /*= */
     Mstring  &operator=(const Mstring &str);
 
+    /* += */
+    Mstring &operator+=(const Mstring &str);
+
     /* 析构 */
     ~Mstring();
     /* 友元函数 */
@@ -31,8 +34,8 @@ private:
     /* 容量  最大存储字符串的个数 */
     int capacity;
     /* 定义的字符串*/
-    char *s;
-};
+      char *s;
+};  
 /* 输出重载 */
 std ::ostream &operator<<(std ::ostream &os, const Mstring &str);
 

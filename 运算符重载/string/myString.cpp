@@ -113,6 +113,16 @@ Mstring & Mstring::operator=(const Mstring &str)
     return *this;
 }
 
+/* += */
+Mstring &Mstring::operator+=(const Mstring &str)
+{
+    *this = *this + str.s;
+    return *this;
+
+
+    // TODO: 在此处插入 return 语句
+}
+
 Mstring::~Mstring()
 {
     delete[] s;
