@@ -28,6 +28,8 @@ private:
    /* 定义的字符串*/
    char * s;
 };
+/* 输出重载 */
+std :: ostream & operator<< (std :: ostream &os,  const Mstring &str);
 
 
 
