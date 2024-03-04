@@ -95,15 +95,22 @@ Mstring Mstring::operator-(const Mstring &str)
             *deles = *backptr;
             *deles++;
             *backptr++;
-
         }
         *deles = '\0';
         deles = strstr(result.s, str.s);
     }
     return result;
-
-
-    return Mstring();
+}
+/* = */
+Mstring & Mstring::operator=(const Mstring &str)
+{
+    this->capacity = str.capacity;
+    this->size = str.size;
+    /* 将旧的给删除 重新定义一个新的大小的字符串数组 */
+    delete[ ] this->s;
+    this->s = new char[str.capacity];
+    strcpy(this->s, str.s);   
+    return *this;
 }
 
 Mstring::~Mstring()
@@ -117,3 +124,4 @@ std::ostream &operator<<(std::ostream &os, const Mstring &str)
     os << str.s;
     return os;
 }
+
