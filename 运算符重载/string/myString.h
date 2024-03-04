@@ -14,11 +14,11 @@ public:
     /* +的重载 */
     Mstring operator+(const Mstring &str);
 
-     /* -的重载 */
+    /* -的重载 */
     Mstring operator-(const Mstring &str);
 
     /*= */
-    Mstring  &operator=(const Mstring &str);
+    Mstring &operator=(const Mstring &str);
 
     /* += 自加  */
     Mstring &operator+=(const Mstring &str);
@@ -28,18 +28,20 @@ public:
     /*== 判断 */
     bool operator==(const Mstring &str);
     /* != */
-    bool operator!=(const Mstring &str); 
+    bool operator!=(const Mstring &str);
 
     /* > */
-    bool operator>(const Mstring &str); 
+    bool operator>(const Mstring &str);
 
     /* [] 修改当前位置的字符 */
     char &operator[](int index);
-    
+
     /* 析构 */
     ~Mstring();
+
     /* 友元函数 */
     friend std ::ostream &operator<<(std ::ostream &os, const Mstring &str);
+    friend std ::istream &operator>>(std ::istream &is, const Mstring &str);
 
 private:
     /*字符串的长度 */
@@ -47,9 +49,11 @@ private:
     /* 容量  最大存储字符串的个数 */
     int capacity;
     /* 定义的字符串*/
-      char *s;
-};  
+    char *s;
+};
 /* 输出重载 */
 std ::ostream &operator<<(std ::ostream &os, const Mstring &str);
+/* 输入重载 */
+std ::istream &operator>>(std ::istream &is, Mstring &str);
 
 #endif

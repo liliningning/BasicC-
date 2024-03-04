@@ -3,9 +3,9 @@
 
 int main()
 {
-    Mstring s = "aello";
+    Mstring s("hello");
     Mstring s1 = "hello";
-    s[3] = 'h';
+    // s[3] = 'h';
     // Mstring s2 = s += s1;
     // if (s1 > s)
     // {

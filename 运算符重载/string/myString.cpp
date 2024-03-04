@@ -192,3 +192,16 @@ std::ostream &operator<<(std::ostream &os, const Mstring &str)
     os << str.s;
     return os;
 }
+
+/* 字符串的输入 >>  */
+std::istream &operator>>(std::istream &is,  Mstring &str)
+{
+    /* 定义val 为输入字符串的最后一位 \0*/
+    char val = '\0';
+    /* 消除行缓存 */
+    while( val =getchar() != '\n')
+    {
+        str += val;
+    }
+    return is;
+}
