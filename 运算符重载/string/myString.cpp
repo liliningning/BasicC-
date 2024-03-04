@@ -5,6 +5,7 @@ const int CAPACITY = 15;
 /* 无参构造 */
 Mstring::Mstring()
 {
+    std ::cout << " 无参 " << std ::endl;
     /* 长度 */
     this->size = 0;
     /* 容量 */
@@ -17,6 +18,7 @@ Mstring::Mstring()
 /*带参构造 */
 Mstring::Mstring(const char *str)
 {
+    std ::cout << " 带参 " << std ::endl;
     this->size = strlen(str);
     /* 判断字符串的大小 小则正常写入 大则扩容 */
     if (this->size < CAPACITY)
@@ -39,6 +41,7 @@ Mstring::Mstring(const char *str)
 /* 拷贝构造 */
 Mstring::Mstring(const Mstring &str)
 {
+    std ::cout << " 拷贝 " << std ::endl;
     this->capacity = str.capacity;
     this->size = str.size;
     this->s = new char[str.capacity];
@@ -51,6 +54,7 @@ Mstring Mstring::operator+(const Mstring &str)
 {
     /* result 将原来的保存下来 */
     Mstring result(*this);
+
     result.size = this->size + str.size;
     /*判断是否需要扩容  */
     if (result.size < result.capacity)
@@ -62,13 +66,13 @@ Mstring Mstring::operator+(const Mstring &str)
         result.capacity = result.size + 1;
         /* 定义一个新的数组接 */
         char *newStr = new char[result.capacity];
-        memset(s, 0, sizeof(newStr));
+        memset(newStr, 0, sizeof(newStr));
         /* 将开始的字符串赋给新的数组 */
         strcpy(newStr, this->s);
         /* 将需要添加的进行追加 */
         strcat(newStr, str.s);
+        delete[] result.s;
         result.s = newStr;
-        delete[] newStr;
     }
 
     return result;
@@ -77,4 +81,11 @@ Mstring Mstring::operator+(const Mstring &str)
 Mstring::~Mstring()
 {
     delete[] s;
+}
+
+/* 输出 */
+std::ostream &operator<<(std::ostream &os, const Mstring &str)
+{
+    os << str.s;
+    return os;
 }
