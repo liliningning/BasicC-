@@ -4,7 +4,7 @@
 int main()
 {
     Mstring s = "hello";
-    Mstring s1 = "world";
+    Mstring s1 = "1";
     Mstring s2 = s += s1;
 
     std :: cout << s2 << std :: endl;

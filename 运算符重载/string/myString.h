@@ -20,8 +20,10 @@ public:
     /*= */
     Mstring  &operator=(const Mstring &str);
 
-    /* += */
+    /* += 自加  */
     Mstring &operator+=(const Mstring &str);
+    /* 加其他的内容 */
+    Mstring &operator+=(const char c);
 
     /* 析构 */
     ~Mstring();

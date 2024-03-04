@@ -1,7 +1,6 @@
 #include "myString.h"
 #include <cstring>
 
-
 const int CAPACITY = 15;
 /* 无参构造 */
 Mstring::Mstring()
@@ -81,16 +80,16 @@ Mstring Mstring::operator+(const Mstring &str)
 /* 运算符重载 - */
 Mstring Mstring::operator-(const Mstring &str)
 {
-    Mstring result (*this);
+    Mstring result(*this);
     /* 找到需要删除的首字母位置 */
-    char * deles = strstr(result.s, str.s);
-    while(deles != nullptr)
+    char *deles = strstr(result.s, str.s);
+    while (deles != nullptr)
     {
         /* 需要往前面移动的指针的位置 */
-        char * backptr = deles + str.size;
-        while(*backptr != '\0')
+        char *backptr = deles + str.size;
+        while (*backptr != '\0')
         {
-        
+
             // *deles++ = *backptr++;
             *deles = *backptr;
             *deles++;
@@ -102,23 +101,44 @@ Mstring Mstring::operator-(const Mstring &str)
     return result;
 }
 /* = */
-Mstring & Mstring::operator=(const Mstring &str)
+Mstring &Mstring::operator=(const Mstring &str)
 {
     this->capacity = str.capacity;
     this->size = str.size;
     /* 将旧的给删除 重新定义一个新的大小的字符串数组 */
-    delete[ ] this->s;
+    delete[] this->s;
     this->s = new char[str.capacity];
-    strcpy(this->s, str.s);   
+    strcpy(this->s, str.s);
     return *this;
 }
 
-/* += */
+/* 自加 +=   自己先加后再进行赋值 */
 Mstring &Mstring::operator+=(const Mstring &str)
 {
     *this = *this + str.s;
     return *this;
+}
 
+/*加其他的内容 加字符  */
+Mstring &Mstring::operator+=(const char c)
+{
+    /* +1 是加上\0的大小 */
+    if (this->size + 1 == this->capacity)
+    {
+        this->capacity *= 2;
+        char *newStr = new char[this->capacity];
+        strcpy(newStr, this->s);
+
+        delete[] this->s;
+        this->s = newStr;
+    }
+
+    /* 将新的字符 添加在字符串的末尾 */
+    this->s[this->size] = c;
+    /*给\0添加一个位置 */
+    this->s[this->size + 1] = '\0';
+    this->size++;
+    return *this;
 
     // TODO: 在此处插入 return 语句
 }
@@ -134,4 +154,3 @@ std::ostream &operator<<(std::ostream &os, const Mstring &str)
     os << str.s;
     return os;
 }
-
