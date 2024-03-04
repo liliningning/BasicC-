@@ -9,6 +9,15 @@ public:
     Mstring();
     /*带参构造函数 */
     Mstring(const  char * str);
+    /* 拷贝构造 */
+    Mstring(const Mstring  &str);
+
+    /* +的重载 */
+    Mstring operator+(const Mstring &str);
+
+    /* 析构 */
+    ~Mstring();
+
 
 
 private:
