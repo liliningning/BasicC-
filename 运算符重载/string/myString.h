@@ -25,6 +25,9 @@ public:
     /* 加其他的内容 */
     Mstring &operator+=(const char c);
 
+    /*== 判断 */
+    bool operator==(const Mstring &str);
+    
     /* 析构 */
     ~Mstring();
     /* 友元函数 */

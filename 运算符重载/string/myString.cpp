@@ -119,7 +119,7 @@ Mstring &Mstring::operator+=(const Mstring &str)
     return *this;
 }
 
-/*加其他的内容 加字符  */
+/*加其他的内容 加字符   */
 Mstring &Mstring::operator+=(const char c)
 {
     /* +1 是加上\0的大小 */
@@ -141,6 +141,17 @@ Mstring &Mstring::operator+=(const char c)
     return *this;
 
     // TODO: 在此处插入 return 语句
+}
+
+/* 逻辑运算符的重载 判断 */
+bool Mstring::operator==(const Mstring &str)
+{
+    /*将字符串进行比较 */
+    if (strcmp(this->s, str.s) == 0)
+    {
+        return true;
+    }
+    return false;
 }
 
 Mstring::~Mstring()

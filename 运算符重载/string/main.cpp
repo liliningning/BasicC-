@@ -3,12 +3,15 @@
 
 int main()
 {
-    Mstring s = "hello";
-    Mstring s1 = "1";
-    Mstring s2 = s += s1;
-
-    std :: cout << s2 << std :: endl;
-
-
-
+    Mstring s = "h";
+    Mstring s1 = "hello";
+    // Mstring s2 = s += s1;
+    if (s1 == s)
+    {
+        std ::cout << "true" << std ::endl;
+    }
+    else
+    {
+        std ::cout << "flase" << std ::endl;
+    }
 }
