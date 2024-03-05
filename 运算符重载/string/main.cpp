@@ -17,13 +17,14 @@ int main()
     // // }
     // std ::cout << s1 << std ::endl;
 
-    StringList list; 
-    list+= s;
-    std ::cout<< list << std ::endl;
-    list= s.split(",");
+    StringList list;
+    list += s;
+    // std ::cout<< list << std ::endl;
+    StringList list2 = s.split(",");
     // list[1] = "nihao";/
-    std ::cout << list << std ::endl;
+    list2 -= "lisi";
+    std::cout << "----------\n";
+    std ::cout << list2 << std ::endl;
 
     /* 是将s里面的所有字符全部塞到了字符串列表的第一个位置 则里面仅有一个*/
-
 }

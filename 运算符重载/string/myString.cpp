@@ -9,11 +9,11 @@ Mstring::Mstring()
     /* 长度 */
     this->size = 0;
     /* 容量 */
-    this->capacity = CAPACITY;
+    this->capacity = 15;
     /*字符串数组 */
     this->s = new char[this->capacity];
     /* 清楚脏数据 */
-    memset(s, 0, CAPACITY);
+    memset(this->s, 0, 15);
 }
 /*带参构造 */
 Mstring::Mstring(const char *str)
@@ -21,19 +21,19 @@ Mstring::Mstring(const char *str)
     // std ::cout << " 带参 " << std ::endl;
     this->size = strlen(str);
     /* 判断字符串的大小 小则正常写入 大则扩容 */
-    if (this->size < CAPACITY)
+    if (this->size <= CAPACITY)
     {
-        this->capacity = CAPACITY;
+        this->capacity = 16;
         this->s = new char[this->capacity];
-        memset(s, 0, CAPACITY);
+        memset(s, 0, 16);
         strcpy(this->s, str);
     }
     /*  扩容 为\n 留位置 */
     else
     {
-        this->capacity = strlen(str) + 1;
+        this->capacity = this->size + 1;
         this->s = new char[this->capacity];
-        memset(s, 0,  this->capacity);
+        memset(s, 0, this->capacity);
         strcpy(this->s, str);
     }
 }
@@ -191,16 +191,15 @@ Mstring::operator double()
     return atof(this->s);
 }
 
-
 /* 切割 */
 StringList Mstring::split(const Mstring &str)
 {
     Mstring temp(*this);
     StringList list;
     /* 定义一个数组去接切割后的字符串 */
-    char * ptr = strtok(temp.s, str.s); 
+    char *ptr = strtok(temp.s, str.s);
     // std::cout<<ptr<<std::endl;
-    while(ptr != nullptr)
+    while (ptr != nullptr)
     {
         list += ptr;
         ptr = strtok(nullptr, str.s);
@@ -209,11 +208,15 @@ StringList Mstring::split(const Mstring &str)
     return list;
 }
 
+
 Mstring::~Mstring()
 {
-    int size = 0;
+    //  size = 0;
 
-    delete[] s;
+    size = 0;
+    this->capacity = 0;
+    delete[] this->s;
+    s = nullptr;
 }
 
 /* 输出 */
@@ -241,9 +244,9 @@ std::istream &operator>>(std::istream &is, Mstring &str)
 StringList::StringList()
 {
     this->size = 0;
-    this->capacity = CAPACITY;
+    this->capacity = 15;
     this->string = new Mstring[this->capacity];
-    memset(this->string, 0, sizeof(this->string));
+    // memset(this->string, 0, this->capacity);
 }
 
 StringList &StringList::operator+=(const Mstring &str)
@@ -264,15 +267,27 @@ StringList &StringList::operator+=(const Mstring &str)
         this->string = newArray;
     }
     /* 如果没有大于则直接重数组的最后往上加 */
-    this->string[this->size++] = str;
+    this->string[this->size++] = str; 
 
     return *this;
 }
 
-// StringList &StringList::operator-=(const Mstring &str)
-// {
+/* 删除想删除的值 */
+StringList &StringList::operator-=(const Mstring &str)
+{
+    for(int idx = 0; idx < this->size; idx++)
+    {
+        if(this->string[idx] == str)
+        {
+            RemoveByIndex(idx);
+            idx--;
+        }
+        
+ 
+    }
+    return *this;
 
-// }
+}
 /* 找找=到当前位置的并替换 */
 Mstring &StringList::operator[](int index)
 {
@@ -286,7 +301,7 @@ void StringList::RemoveByIndex(int index)
     {
         return;
     }
-    for (int idx = 0; idx < this->size; idx++)
+    for (int idx = 0; idx < this->size - 1; idx++)
     {
         this->string[idx] = this->string[idx + 1];
     }
@@ -297,6 +312,7 @@ StringList::~StringList()
 {
     delete[] this->string;
 }
+
 std::ostream &operator<<(std::ostream &os, const StringList &list)
 {
     for (int idx = 0; idx < list.size; idx++)
